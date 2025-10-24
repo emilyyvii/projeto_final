@@ -1,18 +1,14 @@
 import { Image, View, Text, TextInput } from "react-native";
-export default function Cadastro(){
+export default function SingIn(){
     return(
         <View>
         <Image source={require('@/assets/imagens/2.png')}/>
         <View>
-           <Text>Bem-vindo(a)</Text>
-           <Text>Nome:</Text>
-            <TextInput/>
-            <Text>Email:</Text>
-            <TextInput/>
-            <Text>Telefone</Text>
+           <Text>Bem vindo(a)</Text>
+           <Text>Login:</Text>
             <TextInput/>
             <Text>Senha</Text>
-            <TextInput/>
+            
         </View>
         </View>
     )
