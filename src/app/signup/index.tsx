@@ -1,4 +1,5 @@
-import { Image, View, Text, TextInput, StyleSheet } from "react-native";
+import { Image, View, Text, TextInput, StyleSheet, Button } from "react-native";
+import { router } from "expo-router";
 export default function Cadastro(){
     return(
         <View style={styles.container}>
@@ -14,6 +15,7 @@ export default function Cadastro(){
             <TextInput/>
             <Text>Senha</Text>
             <TextInput/>
+            <Button title="oi" onPress={() => router .navigate('/signin/index')}></Button>
         </View>
         </View>
     )
