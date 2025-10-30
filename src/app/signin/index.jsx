@@ -44,7 +44,7 @@ export default function SignIn() {
         </Pressable>
 
         {/* Botão Entrar */}
-        <Button title={"Entrar"} onPress={() => router .navigate('/home') } />
+        <Button title={"ENTRAR"} onPress={() => console.log("Entrou!")} />
 
         {/* Criar conta */}
         <Text style={{ textAlign: "center" }}>
@@ -57,7 +57,7 @@ export default function SignIn() {
           </Text>
         </Text>
       </View>
-      <Footer color="#fff"/>
+      <Footer />
     </View>
   );
 }

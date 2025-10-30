@@ -59,7 +59,7 @@ export default function SignUp(){
           </View>
   
           {/* Botão Criar */}
-          <Button title={"Criar conta"} onPress={() => console.log("Entrou!")} />
+          <Button title={"CRIAR CONTA"} onPress={() => console.log("Entrou!")} />
         </View>
         <Footer />
       </View>
