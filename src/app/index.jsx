@@ -1,0 +1,62 @@
+import { router } from 'expo-router';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import Footer from "../components/Footer";
+ 
+export default function Index(){
+ 
+    function signup(){
+        router.navigate("/(drawer)/(tabs)")
+    }
+    return(
+ 
+        <View style={styles.container}>
+            <Image
+                style={styles.img}
+                source={require("@/assets/imagens/2.png")}
+            />
+            <TouchableOpacity style={styles.button} onPress={signup}>
+                <Text style={styles.title}>Profissional</Text>
+            </TouchableOpacity>
+ 
+            <TouchableOpacity style={styles.button} onPress={signup}>
+                <Text style={styles.title}>Encontrou pet</Text>
+            </TouchableOpacity>
+ 
+            <TouchableOpacity style={styles.button} onPress={() => router .navigate('/signin')}>
+                <Text style={styles.title}>Dono pet</Text>
+            </TouchableOpacity>
+            <Footer style={styles.footer} />
+        </View>
+    );
+}
+ 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 32,
+        padding:60,
+        backgroundColor:"#141496"
+    },
+    title: {
+        fontSize: 22,
+        fontWeight: "bold",
+        color:"black",
+        textAlign:"center"
+    },
+    button:{
+        backgroundColor:"#fdcb58",
+        borderRadius: 10,
+        paddingHorizontal: 32,
+        paddingVertical:10,
+        width:"100%",
+        height:50,
+    },
+    img:{
+        width:300,
+        height:100,
+    }
+})
+ 
+ 
