@@ -1,5 +1,6 @@
 import { router } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import Footer from "../components/Footer";
  
 export default function Index(){
  
@@ -14,17 +15,17 @@ export default function Index(){
                 source={require("@/assets/imagens/2.png")}
             />
             <TouchableOpacity style={styles.button} onPress={signup}>
-                <Text style={styles.title}>PROFISSIONAL</Text>
+                <Text style={styles.title}>Profissional</Text>
             </TouchableOpacity>
  
             <TouchableOpacity style={styles.button} onPress={signup}>
-                <Text style={styles.title}>ENCONTROU PET</Text>
+                <Text style={styles.title}>Encontrou pet</Text>
             </TouchableOpacity>
  
             <TouchableOpacity style={styles.button} onPress={() => router .navigate('/signin')}>
-                <Text style={styles.title}>DONO PET</Text>
+                <Text style={styles.title}>Dono pet</Text>
             </TouchableOpacity>
-       
+            <Footer style={styles.footer} />
         </View>
     );
 }
@@ -56,7 +57,6 @@ const styles = StyleSheet.create({
         width:300,
         height:100,
     }
- 
 })
  
  

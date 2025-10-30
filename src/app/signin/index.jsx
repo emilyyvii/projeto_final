@@ -2,6 +2,7 @@ import Button from "@/components/Button";
 import { router } from "expo-router";
 import { Image, View, Text, Pressable, StyleSheet, TextInput } from "react-native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import Footer from "../../components/Footer";
 
 export default function SignIn() {
   return (
@@ -38,7 +39,7 @@ export default function SignIn() {
         </View>
 
         {/* Esqueci a senha */}
-        <Pressable onPress={() => console.log("Esqueci a senha")}>
+        <Pressable onPress={() => router .navigate('/redefinir')}>
           <Text style={styles.password}>Esqueci a senha</Text>
         </Pressable>
 
@@ -56,6 +57,7 @@ export default function SignIn() {
           </Text>
         </Text>
       </View>
+      <Footer />
     </View>
   );
 }
