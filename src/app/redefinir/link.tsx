@@ -13,19 +13,13 @@ export default function Redefinir(){
                     Bem Vindo(a)!!
                 </Text>
                 <Image style={styles.img} source={require("@/assets/imagens/redefinir.png")} />
-                 <Text style={styles.text}>
-                    Informe o e-mail para qual deseja redefinir sua senha
-                </Text>
-                 <View style={styles.linha}>
-          <Ionicons name="mail" size={20} color="#000" style={styles.icon} />
-            <TextInput
-              style={styles.input}
-              placeholder="Email"
-              placeholderTextColor="#000"
-              secureTextEntry
-            />
-          </View>
-                 <Button title={"ENVIAR"} onPress={() => router.navigate('/redefinir/link')} />
+                <View style={styles.bloco}>
+                    <Text style={styles.text}>
+                        Enviamos um link para seu e-mail, onde você e podera redefinir sua senha.
+                    </Text>
+                </View>
+
+                 <Button title={"REDEFINIR SENHA"} onPress={() => router.navigate('/redefinir/password')} />
                 
             </View>
             <Footer />
@@ -60,37 +54,30 @@ const styles = StyleSheet.create({
         
     },
     text:{
-        color: '#000',
-        fontSize: 19,
+        color: '#fff',
+        fontSize: 16,
         textAlign: 'center',
         marginBottom: 5,
-    },
-    input:{
-        flex: 1,
-        backgroundColor: "transparent",
-        color: "#000",
-        paddingVertical: 4,
-    },
-    icon: {
-        marginRight: 8,
     },
     image:{
         top: 4,
     },
-    linha:{
-        flexDirection: "row",
-        alignItems: "center",
-        borderBottomWidth: 1,
-        borderBottomColor: "#ccc",
-        paddingVertical: 8,
-        marginVertical: 10,
-    },
     img:{
-          width: 100,        
+        width: 100,        
         height: 100,       
         resizeMode: 'contain',
         alignSelf: 'center',
         marginVertical: 10, 
+    },
+    bloco:{
+        backgroundColor: "#0c3f8c",
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        alignSelf: 'center',
+        width: '80%', 
+        marginBottom: 10,
+        borderRadius: 15,
+
     }
 })
 
