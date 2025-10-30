@@ -15,15 +15,15 @@ export default function Index(){
                 source={require("@/assets/imagens/2.png")}
             />
             <TouchableOpacity style={styles.button} onPress={signup}>
-                <Text style={styles.title}>Profissional</Text>
+                <Text style={styles.title}>PROFISSIONAL</Text>
             </TouchableOpacity>
  
             <TouchableOpacity style={styles.button} onPress={signup}>
-                <Text style={styles.title}>Encontrou pet</Text>
+                <Text style={styles.title}>ENCONTROU PET</Text>
             </TouchableOpacity>
  
             <TouchableOpacity style={styles.button} onPress={() => router .navigate('/signin')}>
-                <Text style={styles.title}>Dono pet</Text>
+                <Text style={styles.title}>DONO PET</Text>
             </TouchableOpacity>
             <Footer style={styles.footer} />
         </View>

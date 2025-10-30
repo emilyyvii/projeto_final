@@ -44,7 +44,7 @@ export default function SignIn() {
         </Pressable>
 
         {/* Botão Entrar */}
-        <Button title={"Entrar"} onPress={() => console.log("Entrou!")} />
+        <Button title={"ENTRAR"} onPress={() => console.log("Entrou!")} />
 
         {/* Criar conta */}
         <Text style={{ textAlign: "center" }}>
