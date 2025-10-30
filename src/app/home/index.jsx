@@ -9,28 +9,28 @@ export default function Home() {
 
       <View style={styles.grid}>
          <View style={styles.item}>
-           <Pressable style={styles.button} onPress={() => router.navigate('/signin')}>
+           <Pressable style={styles.button} onPress={() => router.navigate('/location')}>
             <Image style={styles.icon} source={require("@/assets/imagens/localizacao.png")} />
            </Pressable>
            <Text style={styles.text}>Localização{"\n"}em Tempo Real</Text>
          </View>
 
          <View style={styles.item}>
-          <Pressable style={styles.button} onPress={() => router.navigate('/signin')}>
+          <Pressable style={styles.button} onPress={() => router.navigate('/tag')}>
             <Image style={styles.icon} source={require("@/assets/imagens/tag.png")} />
           </Pressable>
           <Text style={styles.text}>Tag</Text>
          </View>
 
          <View style={styles.item}>
-          <Pressable style={styles.button} onPress={() => router.navigate('/signin')}>
+          <Pressable style={styles.button} onPress={() => router.navigate('/mypets')}>
             <Image style={styles.icon} source={require("@/assets/imagens/meuspets.png")} />
           </Pressable>
           <Text style={styles.text}>Meus Pets</Text>
          </View>
 
          <View style={styles.item}>
-          <Pressable style={styles.button} onPress={() => router.navigate('/signin')}>
+          <Pressable style={styles.button} onPress={() => router.navigate('/report')}>
             <Image style={styles.icon} source={require("@/assets/imagens/relatorio.png")} />
           </Pressable>
           <Text style={styles.text}>Relatórios{"\n"}do Animal</Text>

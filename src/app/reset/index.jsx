@@ -4,7 +4,7 @@ import { router } from "expo-router";
 import { View, Text, StyleSheet, TextInput, Image } from "react-native";
 import { Ionicons} from "@expo/vector-icons";
 
-export default function Redefinir(){
+export default function Reset(){
     return(
         <View style={styles.container}>
             <Image style={styles.image} source={require("@/assets/imagens/2.png")} />
@@ -14,27 +14,18 @@ export default function Redefinir(){
                 </Text>
                 <Image style={styles.img} source={require("@/assets/imagens/redefinir.png")} />
                  <Text style={styles.text}>
-                    Insira uma nova senha
+                    Informe o e-mail para qual deseja redefinir sua senha
                 </Text>
                  <View style={styles.linha}>
-          <Ionicons name="lock-closed" size={20} color="#000" style={styles.icon} />
+          <Ionicons name="mail" size={20} color="#000" style={styles.icon} />
             <TextInput
               style={styles.input}
-              placeholder="Senha"
+              placeholder="Email"
               placeholderTextColor="#000"
               secureTextEntry
             />
           </View>
-          <View style={styles.linha}>
-          <Ionicons name="lock-closed" size={20} color="#000" style={styles.icon} />
-            <TextInput
-              style={styles.input}
-              placeholder="Confirmação"
-              placeholderTextColor="#000"
-              secureTextEntry
-            />
-          </View>
-                 <Button title={"REDEFINIR"} onPress={() => router.navigate('/signin')} />
+                 <Button title={"ENVIAR"} onPress={() => router.navigate('/reset/link')} />
                 
             </View>
             <Footer />
@@ -70,10 +61,9 @@ const styles = StyleSheet.create({
     },
     text:{
         color: '#000',
-        fontSize: 15,
+        fontSize: 19,
         textAlign: 'center',
         marginBottom: 5,
-        fontWeight: 'bold',
     },
     input:{
         flex: 1,

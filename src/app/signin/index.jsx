@@ -39,12 +39,12 @@ export default function SignIn() {
         </View>
 
         {/* Esqueci a senha */}
-        <Pressable onPress={() => router .navigate('/redefinir')}>
+        <Pressable onPress={() => router .navigate('/reset')}>
           <Text style={styles.password}>Esqueci a senha</Text>
         </Pressable>
 
         {/* Botão Entrar */}
-        <Button title={"ENTRAR"} onPress={() => console.log("Entrou!")} />
+        <Button title={"ENTRAR"} onPress={() => router.navigate("/home")} />
 
         {/* Criar conta */}
         <Text style={{ textAlign: "center" }}>
