@@ -36,7 +36,7 @@ export default function Home() {
           <Text style={styles.text}>Relatórios{"\n"}do Animal</Text>
          </View>
       </View>
-      <Footer color={('#000')}/>
+      <Footer color={('#fff')}/>
 
     </View>
   );
