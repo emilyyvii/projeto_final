@@ -57,7 +57,7 @@ export default function SignIn() {
           </Text>
         </Text>
       </View>
-      <Footer />
+      <Footer color="#fff"/>
     </View>
   );
 }
