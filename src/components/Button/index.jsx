@@ -12,7 +12,7 @@ export default function ({ title, onPress }) {
 
 const styles = StyleSheet.create({
     button: {
-      backgroundColor: '#0a0a8f',
+      backgroundColor: '#141496',
       borderRadius: 20,
       paddingVertical: 10,
       paddingHorizontal: 40,

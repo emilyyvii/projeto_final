@@ -14,18 +14,27 @@ export default function Redefinir(){
                 </Text>
                 <Image style={styles.img} source={require("@/assets/imagens/redefinir.png")} />
                  <Text style={styles.text}>
-                    Informe o e-mail para qual deseja redefinir sua senha
+                    Insira uma nova senha
                 </Text>
                  <View style={styles.linha}>
-          <Ionicons name="mail" size={20} color="#000" style={styles.icon} />
+          <Ionicons name="lock-closed" size={20} color="#000" style={styles.icon} />
             <TextInput
               style={styles.input}
-              placeholder="Email"
+              placeholder="Senha"
               placeholderTextColor="#000"
               secureTextEntry
             />
           </View>
-                 <Button title={"ENVIAR"} onPress={() => router.navigate('/redefinir/link')} />
+          <View style={styles.linha}>
+          <Ionicons name="lock-closed" size={20} color="#000" style={styles.icon} />
+            <TextInput
+              style={styles.input}
+              placeholder="Confirmação"
+              placeholderTextColor="#000"
+              secureTextEntry
+            />
+          </View>
+                 <Button title={"REDEFINIR"} onPress={() => router.navigate('/signin')} />
                 
             </View>
             <Footer />
@@ -61,9 +70,10 @@ const styles = StyleSheet.create({
     },
     text:{
         color: '#000',
-        fontSize: 19,
+        fontSize: 15,
         textAlign: 'center',
         marginBottom: 5,
+        fontWeight: 'bold',
     },
     input:{
         flex: 1,
