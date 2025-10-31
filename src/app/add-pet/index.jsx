@@ -80,14 +80,14 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "#fdcb58",
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: "bold",
     marginBottom: 20,
     marginTop: 10,
   },
   card: {
     backgroundColor: "#fdcb58",
-    width: "100%",
+    width: "95%",
     borderRadius: 20,
     padding: 20,
     shadowColor: "#000",
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowRadius: 6,
     elevation: 5,
+    top: 100
   },
   label: {
     fontWeight: "bold",
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   input: {
-    backgroundColor: "#e7e7ff",
+    backgroundColor: "#fff",
     borderRadius: 10,
     padding: 10,
     marginBottom: 30,
