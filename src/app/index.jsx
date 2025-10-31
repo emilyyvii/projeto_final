@@ -13,13 +13,13 @@ export default function Index(){
         <View style={styles.container}>
             <Image
                 style={styles.img}
-                source={require("@/assets/imagens/2.png")}
+                source={require("@/assets/imagens/1.png")}
             />
-            <TouchableOpacity style={styles.button} onPress={() => router.navigate('/contact')}>
+            <TouchableOpacity style={styles.button} onPress={() => router.navigate('/signin')}>
                 <Text style={styles.title}>PROFISSIONAL</Text>
             </TouchableOpacity>
  
-            <TouchableOpacity style={styles.button} onPress={signup}>
+            <TouchableOpacity style={styles.button} onPress={() => router.navigate('/contact')}>
                 <Text style={styles.title}>ENCONTROU PET</Text>
             </TouchableOpacity>
  
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
         height:50,
     },
     img:{
-        width:340,
-        height:100,
+        width:300,
+        height:75,
     },
     footer: {
         marginTop: 100

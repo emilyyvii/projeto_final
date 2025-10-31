@@ -7,7 +7,7 @@ import Footer from "../../components/Footer";
 export default function SignIn() {
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={require("@/assets/imagens/2.png")} />
+      <Image style={styles.image} source={require("@/assets/imagens/1.png")} />
 
       <View style={styles.card}>
       <View style={styles.socialContainer}>
@@ -57,12 +57,13 @@ export default function SignIn() {
           </Text>
         </Text>
       </View>
-      <Footer
-                text="Apaixonados por animal"
-                textColor="#fff"
-                showImage={false}
-                style={styles.footer}
-            />
+      <View style={styles.footer}>
+        <Footer
+          text="Apaixonados por animal"
+          textColor="#fff"
+          showImage={false}
+        />
+      </View>
 
     </View>
   );
@@ -82,7 +83,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   image: {
-    top: -40,
+    top: -60,
+    width: 250
   },
   card: {
     backgroundColor: "#fff",
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
     width: "80%",
     padding: 35,
     gap: 20,
-    bottom: 120,
+    bottom: 5,
     alignItems: "stretch",
     height: 550,
   },
@@ -131,4 +133,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
     margin: 15
   },
+  footer:{
+    top: 50
+  }
 });

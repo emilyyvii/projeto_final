@@ -7,15 +7,18 @@ import Footer from "../../components/Footer";
 export default function SignUp(){
     return(
         <View style={styles.container}>
-        <Image style={styles.image} source={require("@/assets/imagens/2.png")} />
+          <Pressable style={styles.arrowBack} onPress={() => router.navigate('/signin')}>
+            <Ionicons name="arrow-back" size={24} color="#fdcb58" style={styles.icon} />
+          </Pressable>
+          <Image style={styles.image} source={require("@/assets/imagens/1.png")} />
   
-        <View style={styles.card}>
-        <View style={styles.socialContainer}>
+          <View style={styles.card}>
+          <View style={styles.socialContainer}>
            <FontAwesome name="google" size={40} color="#EA4335" />
            <FontAwesome name="facebook" size={40}  color="#1877F2" />
            <Ionicons name="mail" size={40} color="#000" />
-        </View>
-          <Text style={styles.title}>Bem vindo(a)!</Text>
+          </View>
+            <Text style={styles.title}>Bem vindo(a)!</Text>
   
           {/* Campo Nome */}
           <View style={styles.inputContainer}>
@@ -61,12 +64,13 @@ export default function SignUp(){
           {/* Botão Criar */}
           <Button title={"CRIAR CONTA"} onPress={() => router.navigate("/home")} />
         </View>
-        <Footer
-          text="Apaixonados por animal"
-          textColor="#fff"
-          showImage={false}
-          style={styles.footer}
-        />
+        <View style={styles.footer}>
+          <Footer
+            text="Apaixonados por animal"
+            textColor="#fff"
+            showImage={false}
+          />
+        </View>
         
       </View>
     )
@@ -80,7 +84,8 @@ const styles = StyleSheet.create({
       alignItems: "center",
     },
     image: {
-        top: -20,
+        top: -40,
+        width: 250
       },
     card: {
       backgroundColor: "#fff",
@@ -91,9 +96,7 @@ const styles = StyleSheet.create({
       alignItems: "stretch",
       gap: 20,
       elevation: 5, // sombra no Android
-      bottom: 120
-
-
+      bottom: 5
     },
     title: {
       color: "#fdcb58",
@@ -147,11 +150,12 @@ const styles = StyleSheet.create({
       fontSize: 16,
       fontWeight: "bold",
     },
-    footerText: {
-      color: "#fff",
-      fontSize: 14,
-      textAlign: "center",
-      marginTop: 15,
+    footer: {
+      top:40
     },
+   arrowBack: {
+    bottom: 70,
+    right: 175
+   }
   });
   

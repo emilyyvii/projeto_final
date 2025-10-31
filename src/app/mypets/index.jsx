@@ -39,11 +39,13 @@ export default function MyPets() {
         <Ionicons name="add" size={30} color="#002E9D" />
       </TouchableOpacity>
 
-      <Footer
-        text="Apaixonados por animal"
-        textColor="#000"
-        showImage={true}
-      />
+      <View style={styles.footer}>
+        <Footer
+          text="Apaixonados por animal"
+          textColor="#000"
+          showImage={true}
+        />
+      </View>
     </View>
   );
 }
@@ -52,6 +54,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+
   },
 
   header: {
@@ -92,7 +95,6 @@ const styles = StyleSheet.create({
     color: "#002E9D",
     fontWeight: "600",
   },
-
   addButton: {
     position: "absolute",
     bottom: 90,
@@ -105,4 +107,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     elevation: 5,
   },
+  footer: {
+    marginBottom: 80
+  }
 });
