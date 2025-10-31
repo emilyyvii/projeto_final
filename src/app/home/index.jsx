@@ -1,5 +1,6 @@
 import { View, Image, StyleSheet, Pressable, Text } from "react-native";
 import { router } from "expo-router";
+import Footer from "../../components/Footer";
 
 export default function Home() {  return (
     <View style={styles.container}>
@@ -35,8 +36,12 @@ export default function Home() {  return (
          </View>
       </View>
       <View style={styles.footer}>
-        <Image style={styles.logo} source={require("@/assets/imagens/logorodape.png")}/>
-        <Text style={styles.footerText}>Apaixonados por animais</Text>
+        <Footer
+          text="Apaixonados por animal"
+          textColor="000"
+          showImage={true}
+          style={styles.footer}
+        />
       </View>
     </View>
   );

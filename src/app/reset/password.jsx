@@ -40,7 +40,13 @@ export default function Password(){
                  <Button title={"REDEFINIR"} onPress={() => router.navigate('/signin')} />
                 
             </View>
-            <Footer />
+            <Footer
+                text="Apaixonados por animal"
+                textColor="#fff"
+                showImage={false}
+                style={styles.footer}
+            />
+            
         </View>
     )
 } 

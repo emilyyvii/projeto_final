@@ -11,9 +11,6 @@ export default function Index(){
     return(
  
         <View style={styles.container}>
-            <Pressable style={styles.arrowBack} onPress={() => router.navigate('/home')}>
-            <Ionicons name="arrow-back" size={24} color="black" style={styles.icon} />
-            </Pressable>
             <Image
                 style={styles.img}
                 source={require("@/assets/imagens/2.png")}
@@ -29,7 +26,12 @@ export default function Index(){
             <TouchableOpacity style={styles.button} onPress={() => router .navigate('/signin')}>
                 <Text style={styles.title}>DONO PET</Text>
             </TouchableOpacity>
-            <Footer style={styles.footer} />
+            <Footer
+                text="Apaixonados por animal"
+                textColor="#fff"
+                showImage={false}
+            />
+
         </View>
     );
 }
@@ -58,8 +60,11 @@ const styles = StyleSheet.create({
         height:50,
     },
     img:{
-        width:300,
+        width:340,
         height:100,
+    },
+    footer: {
+        marginTop: 100
     }
 })
  

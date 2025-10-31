@@ -57,7 +57,13 @@ export default function SignIn() {
           </Text>
         </Text>
       </View>
-      <Footer />
+      <Footer
+                text="Apaixonados por animal"
+                textColor="#fff"
+                showImage={false}
+                style={styles.footer}
+            />
+
     </View>
   );
 }

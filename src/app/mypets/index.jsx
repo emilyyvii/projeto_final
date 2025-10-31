@@ -3,6 +3,7 @@ import { View, FlatList, Text, TouchableOpacity, Image, StyleSheet, Pressable } 
 import { router } from "expo-router";
 import usePetContext from "../../components/context/usePetContext";
 import { Ionicons } from "@expo/vector-icons";
+import Footer from "../../components/Footer";
 
 export default function MyPets() {
   const { pets } = usePetContext();
@@ -29,6 +30,13 @@ export default function MyPets() {
       <TouchableOpacity style={styles.addButton} onPress={() => router.push("/add-pet")}>
         <Text style={styles.addText}>+</Text>
       </TouchableOpacity>
+      <Footer 
+        text="Apaixonados por animal"
+        textColor="#000"
+        showImage={true}
+        style={styles.footer}
+      />
+
     </View>
   );
 }
@@ -51,6 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   addText: { fontSize: 32, color: "#002E9D", fontWeight: "bold" },
+  
 });
 
 

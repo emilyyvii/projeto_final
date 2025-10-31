@@ -7,7 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 export default function Link(){
     return(
         <View style={styles.container}>
-            <Pressable style={styles.arrowBack} onPress={() => router.navigate('/home')}>
+            <Pressable style={styles.arrowBack} onPress={() => router.navigate('/reset/index')}>
       <Ionicons name="arrow-back" size={24} color="black" style={styles.icon} />
       </Pressable>
             <Image style={styles.image} source={require("@/assets/imagens/2.png")} />
@@ -25,7 +25,13 @@ export default function Link(){
                  <Button title={"REDEFINIR SENHA"} onPress={() => router.navigate('/reset/password')} />
                 
             </View>
-            <Footer />
+             <Footer
+                           text="Apaixonados por animal"
+                           textColor="#fff"
+                           showImage={false}
+                           style={styles.footer}
+                       />
+           
         </View>
     )
 } 
