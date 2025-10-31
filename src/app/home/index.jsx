@@ -40,7 +40,6 @@ export default function Home() {  return (
           text="Apaixonados por animal"
           textColor="000"
           showImage={true}
-          style={styles.footer}
         />
       </View>
     </View>
@@ -86,5 +85,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "center",
   },
-  
+  footer: {
+    marginTop: 60
+  }
 });

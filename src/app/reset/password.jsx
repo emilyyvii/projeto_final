@@ -7,11 +7,11 @@ import { Ionicons} from "@expo/vector-icons";
 export default function Password(){
     return(
         <View style={styles.container}>
-            <Pressable style={styles.arrowBack} onPress={() => router.navigate('/home')}>
-            <Ionicons name="arrow-back" size={24} color="black" style={styles.icon} />
+            <Pressable style={styles.arrowBack} onPress={() => router.navigate('/reset/link')}>
+            <Ionicons name="arrow-back" size={24} color="#fdcb58" style={styles.icon} />
             </Pressable>
-            <Image style={styles.image} source={require("@/assets/imagens/2.png")} />
-            <View style={styles.white}>
+            <Image style={styles.image} source={require("@/assets/imagens/1.png")} />
+            <View style={styles.card}>
                 <Text style={styles.title}>
                     Bem Vindo(a)!!
                 </Text>
@@ -40,12 +40,13 @@ export default function Password(){
                  <Button title={"REDEFINIR"} onPress={() => router.navigate('/signin')} />
                 
             </View>
-            <Footer
-                text="Apaixonados por animal"
-                textColor="#fff"
-                showImage={false}
-                style={styles.footer}
-            />
+            <View style={styles.footer}>
+                <Footer
+                    text="Apaixonados por animal"
+                    textColor="#fff"
+                    showImage={false}
+                />
+            </View>
             
         </View>
     )
@@ -59,13 +60,13 @@ const styles = StyleSheet.create({
         gap: 25,
         justifyContent: 'center'
     },
-    white:{
+    card:{
         backgroundColor: "#fff",
         borderRadius: 20,
         width: "80%",
         padding: 35,
         gap: 20,
-        bottom: 120,
+        bottom: 40,
         alignItems: "stretch",
         height: 480,
     },
@@ -94,7 +95,8 @@ const styles = StyleSheet.create({
         marginRight: 8,
     },
     image:{
-        top: 4,
+        top: -60,
+        width: 250
     },
     linha:{
         flexDirection: "row",
@@ -110,6 +112,13 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         alignSelf: 'center',
         marginVertical: 10, 
+    },
+    arrowBack: {
+        bottom: 80,
+        right: 180
+    },
+    footer: {
+        top:40
     }
 })
 

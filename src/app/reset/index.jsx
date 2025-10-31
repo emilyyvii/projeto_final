@@ -8,10 +8,10 @@ export default function Reset(){
     return(
         <View style={styles.container}>
             <Pressable style={styles.arrowBack} onPress={() => router.navigate('/signin')}>
-      <Ionicons name="arrow-back" size={24} color="black" style={styles.icon} />
-      </Pressable>
-            <Image style={styles.image} source={require("@/assets/imagens/2.png")} />
-            <View style={styles.white}>
+                <Ionicons name="arrow-back" size={24} color="#fdcb58" style={styles.icon} />
+            </Pressable>
+            <Image style={styles.image} source={require("@/assets/imagens/1.png")} />
+            <View style={styles.card}>
                 <Text style={styles.title}>
                     Bem Vindo(a)!!
                 </Text>
@@ -31,12 +31,13 @@ export default function Reset(){
                  <Button title={"ENVIAR"} onPress={() => router.navigate('/reset/link')} />
                 
             </View>
-              <Footer
-                            text="Apaixonados por animal"
-                            textColor="#fff"
-                            showImage={false}
-                            style={styles.footer}
-                        />
+            <View style={styles.footer}>
+                <Footer
+                    text="Apaixonados por animal"
+                    textColor="#fff"
+                    showImage={false}
+                />
+            </View>
             
         </View>
     )
@@ -50,13 +51,13 @@ const styles = StyleSheet.create({
         gap: 25,
         justifyContent: 'center'
     },
-    white:{
+    card:{
         backgroundColor: "#fff",
         borderRadius: 20,
         width: "80%",
         padding: 35,
         gap: 20,
-        bottom: 120,
+        bottom: 40,
         alignItems: "stretch",
         height: 480,
     },
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
         marginRight: 8,
     },
     image:{
-        top: 4,
+        top: -60,
     },
     linha:{
         flexDirection: "row",
@@ -100,6 +101,13 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         alignSelf: 'center',
         marginVertical: 10, 
+    },
+    footer: {
+        top: 40
+    },
+    arrowBack: {
+        bottom: 80,
+        right: 170
     }
 })
 
