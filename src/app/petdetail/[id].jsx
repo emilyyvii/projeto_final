@@ -1,130 +1,194 @@
-import { useLocalSearchParams, router } from "expo-router";
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
-import usePetContext from "../../components/context/usePetContext";
+import { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Pressable,
+  Keyboard,
+} from "react-native";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import RecordButton from "../../components/RecordButton";
-import Footer from "../../components/Footer";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function PetDetail() {
-  const { id } = useLocalSearchParams();
-  const { pets } = usePetContext();
-  const pet = pets.find((p) => p.id === id);
+const KEY_TELEFONE = "@contact_telefone";
+const KEY_EMAIL = "@contact_email";
 
-  if (!pet) return <Text>Pet não encontrado</Text>;
+export default function Contact() {
+  const router = useRouter();
+  const { tipo } = useLocalSearchParams();
+  const podeEditar = tipo === "dono"; // só o dono pode editar
+
+  const [telefone, setTelefone] = useState("");
+  const [email, setEmail] = useState("");
+  const [editandoTelefone, setEditandoTelefone] = useState(false);
+  const [editandoEmail, setEditandoEmail] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const t = await AsyncStorage.getItem(KEY_TELEFONE);
+        const e = await AsyncStorage.getItem(KEY_EMAIL);
+        if (t) setTelefone(t);
+        if (e) setEmail(e);
+      } catch (err) {
+        console.warn("Erro ao carregar dados:", err);
+      }
+    })();
+  }, []);
+
+  const saveToStorage = async (key, value) => {
+    try {
+      await AsyncStorage.setItem(key, value ?? "");
+    } catch (err) {
+      console.warn("Erro ao salvar:", err);
+    }
+  };
+
+  const toggleEditTelefone = () => {
+    if (!podeEditar) return;
+    const novo = !editandoTelefone;
+    if (editandoTelefone && !novo) {
+      saveToStorage(KEY_TELEFONE, telefone);
+      Keyboard.dismiss();
+    }
+    setEditandoTelefone(novo);
+  };
+
+  const toggleEditEmail = () => {
+    if (!podeEditar) return;
+    const novo = !editandoEmail;
+    if (editandoEmail && !novo) {
+      saveToStorage(KEY_EMAIL, email);
+      Keyboard.dismiss();
+    }
+    setEditandoEmail(novo);
+  };
 
   return (
     <View style={styles.container}>
-      <View style={styles.containerInfo}>
-        <Pressable style={styles.arrowBack} onPress={() => router.navigate("/home")}>
+      {/* Topo */}
+      <View style={styles.header}>
+        <Pressable onPress={() => router.back()}>
           <Ionicons name="arrow-back" size={28} color="#fdcb58" />
         </Pressable>
-
-        <Image source={{ uri: pet.photo }} style={styles.image} />
-        <Text style={styles.name}>{pet.name}</Text>
-
-        <View style={styles.ageBox}>
-          <Text style={styles.age}>{pet.breed}</Text>
-          <Text style={styles.age}>{pet.age} anos</Text>
-        </View>
+        <Text style={styles.headerTitle}>Informações de contato</Text>
       </View>
 
-      <View style={styles.containerButton}>
-        <Text style={styles.text}>Ficha do Animal</Text>
-        <View style={styles.grid}>
-          {/* 👇 Aqui o dono acessa com tipo=dono */}
-          <RecordButton title={"Contato"} onPress={() => router.navigate("/contact?tipo=dono")} />
-          <RecordButton title={"Problemas de Saúde"} onPress={() => router.navigate("/home")} />
-          <RecordButton title={"Vacinas"} onPress={() => router.navigate("/home")} />
-          <RecordButton title={"Alimentação"} onPress={() => router.navigate("/home")} />
+      {/* Modo leitura/edição */}
+      {!podeEditar && (
+        <View style={styles.infoBanner}>
+          <Ionicons name="eye" size={18} color="#fff" />
+          <Text style={styles.bannerText}>Modo visualização — apenas leitura</Text>
+        </View>
+      )}
+
+      <View style={styles.Content}>
+        {/* Telefone */}
+        <View style={styles.infoBox}>
+          <View style={styles.infoHeader}>
+            <Text style={styles.label}>Número de telefone</Text>
+            {podeEditar && (
+              <Pressable onPress={toggleEditTelefone}>
+                <Ionicons name="pencil" size={22} color="#fdcb58" />
+              </Pressable>
+            )}
+          </View>
+          {editandoTelefone && podeEditar ? (
+            <TextInput
+              style={styles.input}
+              placeholder="Digite o novo número..."
+              placeholderTextColor="#999"
+              value={telefone}
+              onChangeText={setTelefone}
+              onSubmitEditing={toggleEditTelefone}
+              returnKeyType="done"
+            />
+          ) : (
+            <Text style={styles.value}>{telefone || "—"}</Text>
+          )}
+        </View>
+
+        {/* Email */}
+        <View style={styles.infoBox}>
+          <View style={styles.infoHeader}>
+            <Text style={styles.label}>E-mail</Text>
+            {podeEditar && (
+              <Pressable onPress={toggleEditEmail}>
+                <Ionicons name="pencil" size={22} color="#fdcb58" />
+              </Pressable>
+            )}
+          </View>
+          {editandoEmail && podeEditar ? (
+            <TextInput
+              style={styles.input}
+              placeholder="Digite o novo e-mail..."
+              placeholderTextColor="#999"
+              value={email}
+              onChangeText={setEmail}
+              onSubmitEditing={toggleEditEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              returnKeyType="done"
+            />
+          ) : (
+            <Text style={styles.value}>{email || "—"}</Text>
+          )}
         </View>
       </View>
-
-      <Footer text="Apaixonados por animais" textColor="#fff" showImage={false} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#141496",
+  container: { flex: 1, backgroundColor: "#F7C843" },
+  header: {
+    flexDirection: "row",
     alignItems: "center",
-    paddingTop: 10,
-  },
-  containerInfo: {
-    backgroundColor: "#2e63ce",
-    borderRadius: 16,
-    width: "90%",
-    maxWidth: 380,
-    marginTop: 50,
-    paddingVertical: 25,
+    backgroundColor: "#002E9D",
+    paddingTop: 50,
+    paddingBottom: 15,
     paddingHorizontal: 20,
-    position: "relative",
   },
-  arrowBack: {
-    position: "absolute",
-    top: 15,
-    left: 15,
-    zIndex: 10,
-    padding: 5,
-  },
-  image: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-    alignSelf: "center",
-    marginTop: 20,
-    borderWidth: 4,
-    borderColor: "#fff",
-  },
-  name: {
-    fontSize: 28,
+  headerTitle: {
+    color: "#fdcb58",
+    fontSize: 18,
     fontWeight: "bold",
-    textAlign: "center",
-    color: "#fff",
-    marginTop: 15,
+    marginLeft: 12,
   },
-  ageBox: {
+  infoBanner: {
+    backgroundColor: "#142A8C",
     flexDirection: "row",
+    alignItems: "center",
     justifyContent: "center",
-    marginVertical: 15,
-    gap: 15,
-  },
-  age: {
-    backgroundColor: "#5B8DEE",
-    color: "#fff",
-    borderRadius: 20,
     paddingVertical: 8,
-    paddingHorizontal: 20,
-    fontSize: 16,
-    fontWeight: "600",
+    gap: 6,
   },
-  containerButton: {
-    backgroundColor: "#FEC744",
-    borderRadius: 16,
-    width: "90%",
-    maxWidth: 380,
-    marginTop: 25,
-    padding: 20,
-    flex: 1,
-    maxHeight: 350,
-    gap: 10,
-  },
-  text: {
-    fontSize: 20,
-    color: "#fff",
-    fontWeight: "bold",
-    textAlign: "center",
-    backgroundColor: "#729cf2",
-    borderRadius: 25,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
+  bannerText: { color: "#fff", fontSize: 14 },
+  Content: { marginTop: 40 },
+  infoBox: {
+    backgroundColor: "#142A8C",
+    borderRadius: 14,
+    padding: 16,
     marginBottom: 20,
+    justifyContent: "center",
+    width: "90%",
+    alignSelf: "center",
   },
-  grid: {
+  infoHeader: {
     flexDirection: "row",
-    flexWrap: "wrap",
     justifyContent: "space-between",
-    gap: 13,
+    alignItems: "center",
+    marginBottom: 6,
+  },
+  label: { color: "#fdcb58", fontSize: 16, fontWeight: "bold" },
+  value: { color: "#fff", fontSize: 15 },
+  input: {
+    backgroundColor: "#fff",
+    color: "#000",
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    fontSize: 15,
   },
 });
