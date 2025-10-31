@@ -7,7 +7,7 @@ import {
   Pressable,
   Keyboard,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -16,28 +16,27 @@ const KEY_EMAIL = "@contact_email";
 
 export default function Contact() {
   const router = useRouter();
+  const { tipo } = useLocalSearchParams();
+  const podeEditar = tipo === "dono"; 
 
   const [telefone, setTelefone] = useState("");
   const [email, setEmail] = useState("");
-
   const [editandoTelefone, setEditandoTelefone] = useState(false);
   const [editandoEmail, setEditandoEmail] = useState(false);
 
-  // carregar dados ao montar
   useEffect(() => {
     (async () => {
       try {
         const t = await AsyncStorage.getItem(KEY_TELEFONE);
         const e = await AsyncStorage.getItem(KEY_EMAIL);
-        if (t !== null) setTelefone(t);
-        if (e !== null) setEmail(e);
+        if (t) setTelefone(t);
+        if (e) setEmail(e);
       } catch (err) {
         console.warn("Erro ao carregar dados:", err);
       }
     })();
   }, []);
 
-  // salva um valor no AsyncStorage
   const saveToStorage = async (key, value) => {
     try {
       await AsyncStorage.setItem(key, value ?? "");
@@ -46,10 +45,9 @@ export default function Contact() {
     }
   };
 
-  // alterna edição do telefone: quando fecha, salva
   const toggleEditTelefone = () => {
+    if (!podeEditar) return;
     const novo = !editandoTelefone;
-    // se estamos saindo do modo edição, salvar
     if (editandoTelefone && !novo) {
       saveToStorage(KEY_TELEFONE, telefone);
       Keyboard.dismiss();
@@ -57,8 +55,8 @@ export default function Contact() {
     setEditandoTelefone(novo);
   };
 
-  // alterna edição do email: quando fecha, salva
   const toggleEditEmail = () => {
+    if (!podeEditar) return;
     const novo = !editandoEmail;
     if (editandoEmail && !novo) {
       saveToStorage(KEY_EMAIL, email);
@@ -77,64 +75,65 @@ export default function Contact() {
         <Text style={styles.headerTitle}>Informações de contato</Text>
       </View>
 
-
       <View style={styles.Content}>
-          {/* Telefone */}
-          <View style={styles.infoBox}>
-            <View style={styles.infoHeader}>
-              <Text style={styles.label}>Número de telefone</Text>
+        {/* Telefone */}
+        <View style={styles.infoBox}>
+          <View style={styles.infoHeader}>
+            <Text style={styles.label}>Número de telefone</Text>
+            {podeEditar && (
               <Pressable onPress={toggleEditTelefone}>
                 <Ionicons name="pencil" size={22} color="#fdcb58" />
               </Pressable>
-            </View>
-            {editandoTelefone ? (
-              <TextInput
-                style={styles.input}
-                placeholder="Digite o novo número..."
-                placeholderTextColor="#999"
-                value={telefone}
-                onChangeText={setTelefone}
-                onSubmitEditing={toggleEditTelefone}
-                returnKeyType="done"
-              />
-            ) : (
-              <Text style={styles.value}>{telefone || "—"}</Text>
             )}
           </View>
-          {/* Email */}
-          <View style={styles.infoBox}>
-            <View style={styles.infoHeader}>
-              <Text style={styles.label}>E-mail</Text>
+          {editandoTelefone && podeEditar ? (
+            <TextInput
+              style={styles.input}
+              placeholder="Digite o novo número..."
+              placeholderTextColor="#999"
+              value={telefone}
+              onChangeText={setTelefone}
+              onSubmitEditing={toggleEditTelefone}
+              returnKeyType="done"
+            />
+          ) : (
+            <Text style={styles.value}>{telefone || "—"}</Text>
+          )}
+        </View>
+
+        {/* Email */}
+        <View style={styles.infoBox}>
+          <View style={styles.infoHeader}>
+            <Text style={styles.label}>E-mail</Text>
+            {podeEditar && (
               <Pressable onPress={toggleEditEmail}>
                 <Ionicons name="pencil" size={22} color="#fdcb58" />
               </Pressable>
-            </View>
-            {editandoEmail ? (
-              <TextInput
-                style={styles.input}
-                placeholder="Digite o novo e-mail..."
-                placeholderTextColor="#999"
-                value={email}
-                onChangeText={setEmail}
-                onSubmitEditing={toggleEditEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-                returnKeyType="done"
-              />
-            ) : (
-              <Text style={styles.value}>{email || "—"}</Text>
             )}
-      </View>
+          </View>
+          {editandoEmail && podeEditar ? (
+            <TextInput
+              style={styles.input}
+              placeholder="Digite o novo e-mail..."
+              placeholderTextColor="#999"
+              value={email}
+              onChangeText={setEmail}
+              onSubmitEditing={toggleEditEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              returnKeyType="done"
+            />
+          ) : (
+            <Text style={styles.value}>{email || "—"}</Text>
+          )}
+        </View>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F7C843",
-  },
+  container: { flex: 1, backgroundColor: "#F7C843" },
   header: {
     flexDirection: "row",
     alignItems: "center",
@@ -149,34 +148,27 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginLeft: 12,
   },
-    Content: {
-    marginTop: 300,
-    },
+
+  bannerText: { color: "#fff", fontSize: 14 },
+  Content: { marginTop: 40 },
   infoBox: {
     backgroundColor: "#142A8C",
     borderRadius: 14,
     padding: 16,
     marginBottom: 20,
     justifyContent: "center",
-    width: '90%',
+    width: "90%",
     alignSelf: "center",
-    
   },
+  
   infoHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 6,
   },
-  label: {
-    color: "#fdcb58",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  value: {
-    color: "#fff",
-    fontSize: 15,
-  },
+  label: { color: "#fdcb58", fontSize: 16, fontWeight: "bold" },
+  value: { color: "#fff", fontSize: 15 },
   input: {
     backgroundColor: "#fff",
     color: "#000",
