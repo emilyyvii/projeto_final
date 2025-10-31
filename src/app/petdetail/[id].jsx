@@ -4,7 +4,7 @@ import usePetContext from "../../components/context/usePetContext";
 import { Ionicons} from "@expo/vector-icons";
 import RecordButton from "../../components/RecordButton";
 import Footer from "../../components/Footer";
- 
+
 export default function PetDetail() {
   const { id } = useLocalSearchParams();
   const { pets } = usePetContext();
@@ -30,7 +30,7 @@ export default function PetDetail() {
       <View style={styles.containerButton}>
         <Text style={styles.text}>Ficha do Animal</Text>
         <View style={styles.grid}>
-          <RecordButton title={"Contato"} onPress={() => router.navigate("/home")} />
+          <RecordButton title={"Contato"} onPress={() => router.navigate("/contact")} />
           <RecordButton title={"Problemas de Saúde"} onPress={() => router.navigate("/home")} />
           <RecordButton title={"Vacinas"} onPress={() => router.navigate("/home")} />
           <RecordButton title={"Alimentação"} onPress={() => router.navigate("/home")} />

@@ -6,7 +6,7 @@ export default function Footer({ text, textColor = "#000", showImage = false }) 
     <View style={styles.container}>
       {showImage && (
         <Image
-          source={require("@/assets/imagens/1.png")} 
+          source={require("@/assets/imagens/2.png")} 
           style={styles.image}
           resizeMode="contain"
         />
@@ -20,15 +20,15 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 10,
+    marginTop: 60
   },
   image: {
-    width: 300,
-    height: 150,
-    marginBottom: 5,
+    width: 180,
+    height: 45,
   },
   text: {
-    fontSize: 18,
-    fontStyle: "italic"
+    fontSize: 16,
+    fontStyle: "italic",
+    textAlign: "center",
   },
 });
