@@ -6,7 +6,7 @@ export default function Footer({ text, textColor = "#000", showImage = false }) 
     <View style={styles.container}>
       {showImage && (
         <Image
-          source={require("@/assets/imagens/")} 
+          source={require("@/assets/imagens/1.png")} 
           style={styles.image}
           resizeMode="contain"
         />
@@ -23,12 +23,12 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   image: {
-    width: 120,
-    height: 40,
+    width: 300,
+    height: 150,
     marginBottom: 5,
   },
   text: {
-    fontSize: 14,
-    fontStyle: "italic",
+    fontSize: 18,
+    fontStyle: "italic"
   },
 });
