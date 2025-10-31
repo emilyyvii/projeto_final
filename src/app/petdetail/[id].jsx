@@ -140,6 +140,7 @@ export default function Contact() {
   );
 }
 
+
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#F7C843" },
   header: {
