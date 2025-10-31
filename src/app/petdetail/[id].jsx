@@ -46,6 +46,7 @@ export default function PetDetail() {
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
