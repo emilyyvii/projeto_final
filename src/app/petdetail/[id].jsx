@@ -2,6 +2,7 @@ import { useLocalSearchParams } from "expo-router";
 import { View, Text, Image, StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import usePetContext from "../../components/context/usePetContext";
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 export default function PetDetail() {
   const { id } = useLocalSearchParams();
