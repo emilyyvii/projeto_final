@@ -1,12 +1,18 @@
-import { View, FlatList, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
+
+import { View, FlatList, Text, TouchableOpacity, Image, StyleSheet, Pressable } from "react-native";
 import { router } from "expo-router";
 import usePetContext from "../../components/context/usePetContext";
+import { Ionicons } from "@expo/vector-icons";
+import Footer from "../../components/Footer";
 
 export default function MyPets() {
   const { pets } = usePetContext();
 
   return (
     <View style={styles.container}>
+      <Pressable style={styles.arrowBack} onPress={() => router.navigate('/home')}>
+      <Ionicons name="arrow-back" size={24} color="black" style={styles.icon} />
+      </Pressable>
       <Text style={styles.title}>Meus Pets</Text>
       <FlatList
         data={pets}
@@ -24,6 +30,13 @@ export default function MyPets() {
       <TouchableOpacity style={styles.addButton} onPress={() => router.push("/add-pet")}>
         <Text style={styles.addText}>+</Text>
       </TouchableOpacity>
+      <Footer 
+        text="Apaixonados por animal"
+        textColor="#000"
+        showImage={true}
+        style={styles.footer}
+      />
+
     </View>
   );
 }
@@ -46,5 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   addText: { fontSize: 32, color: "#002E9D", fontWeight: "bold" },
+  
 });
+
 

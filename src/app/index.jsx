@@ -1,6 +1,7 @@
 import { router } from 'expo-router';
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image, Pressable } from 'react-native';
 import Footer from "../components/Footer";
+import { Ionicons } from '@expo/vector-icons';
  
 export default function Index(){
  
@@ -25,7 +26,12 @@ export default function Index(){
             <TouchableOpacity style={styles.button} onPress={() => router .navigate('/signin')}>
                 <Text style={styles.title}>DONO PET</Text>
             </TouchableOpacity>
-            <Footer style={styles.footer} />
+            <Footer
+                text="Apaixonados por animal"
+                textColor="#fff"
+                showImage={false}
+            />
+
         </View>
     );
 }
@@ -54,8 +60,11 @@ const styles = StyleSheet.create({
         height:50,
     },
     img:{
-        width:300,
+        width:340,
         height:100,
+    },
+    footer: {
+        marginTop: 100
     }
 })
  

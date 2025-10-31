@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { View, Text, TextInput, Button, Image, StyleSheet } from "react-native";
+import { View, Text, TextInput, Button, Image, StyleSheet, Pressable } from "react-native";
 import usePetContext from "../../components/context/usePetContext";
 import { router } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function AddPet() {
   const { addPet } = usePetContext();
@@ -18,6 +19,9 @@ export default function AddPet() {
 
   return (
     <View style={styles.container}>
+      <Pressable style={styles.arrowBack} onPress={() => router.navigate('/mypets')}>
+      <Ionicons name="arrow-back" size={24} color="black" style={styles.icon} />
+      </Pressable>
       <Text style={styles.title}>Adicionar Pet</Text>
       <Text>Foto do Pet:</Text>
       <TextInput style={styles.input} placeholder="URL da Foto" value={photo} onChangeText={setPhoto} />

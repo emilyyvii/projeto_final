@@ -61,7 +61,13 @@ export default function SignUp(){
           {/* Botão Criar */}
           <Button title={"CRIAR CONTA"} onPress={() => router.navigate("/home")} />
         </View>
-        <Footer />
+        <Footer
+          text="Apaixonados por animal"
+          textColor="#fff"
+          showImage={false}
+          style={styles.footer}
+        />
+        
       </View>
     )
 }

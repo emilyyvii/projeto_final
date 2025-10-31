@@ -1,6 +1,7 @@
 import { useLocalSearchParams } from "expo-router";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import usePetContext from "../../components/context/usePetContext";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function PetDetail() {
   const { id } = useLocalSearchParams();
@@ -11,6 +12,9 @@ export default function PetDetail() {
 
   return (
     <View style={styles.container}>
+      <Pressable style={styles.arrowBack} onPress={() => router.navigate('/mypets')}>
+      <Ionicons name="arrow-back" size={24} color="black" style={styles.icon} />
+      </Pressable>
       <Image source={{ uri: pet.photo }} style={styles.image} />
       <Text style={styles.name}>{pet.name}</Text>
       <View style={styles.infoBox}>

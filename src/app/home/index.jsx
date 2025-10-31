@@ -35,8 +35,14 @@ export default function Home() {  return (
           <Text style={styles.text}>Relatórios{"\n"}do Animal</Text>
          </View>
       </View>
-      <Footer color={('#fff')}/>
-
+      <View style={styles.footer}>
+        <Footer
+          text="Apaixonados por animal"
+          textColor="000"
+          showImage={true}
+          style={styles.footer}
+        />
+      </View>
     </View>
   );
 }

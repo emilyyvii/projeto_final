@@ -1,11 +1,15 @@
 import Button from "@/components/Button";
 import Footer from "../../components/Footer";
 import { router } from "expo-router";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Link(){
     return(
         <View style={styles.container}>
+            <Pressable style={styles.arrowBack} onPress={() => router.navigate('/reset/index')}>
+      <Ionicons name="arrow-back" size={24} color="black" style={styles.icon} />
+      </Pressable>
             <Image style={styles.image} source={require("@/assets/imagens/2.png")} />
             <View style={styles.white}>
                 <Text style={styles.title}>
@@ -21,7 +25,13 @@ export default function Link(){
                  <Button title={"REDEFINIR SENHA"} onPress={() => router.navigate('/reset/password')} />
                 
             </View>
-            <Footer />
+             <Footer
+                           text="Apaixonados por animal"
+                           textColor="#fff"
+                           showImage={false}
+                           style={styles.footer}
+                       />
+           
         </View>
     )
 } 
