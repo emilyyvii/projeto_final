@@ -14,7 +14,7 @@ export default function Index(){
                 style={styles.img}
                 source={require("@/assets/imagens/2.png")}
             />
-            <TouchableOpacity style={styles.button} onPress={signup}>
+            <TouchableOpacity style={styles.button} onPress={() => router.navigate('/contact')}>
                 <Text style={styles.title}>PROFISSIONAL</Text>
             </TouchableOpacity>
  

@@ -20,7 +20,7 @@ export default function Home() {  return (
           </Pressable>
           <Text style={styles.text}>Tag</Text>
          </View>
-
+    
          <View style={styles.item}>
           <Pressable style={styles.button} onPress={() => router.navigate('/mypets')}>
             <Image style={styles.icon} source={require("@/assets/imagens/meuspets.png")} />
