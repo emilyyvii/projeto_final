@@ -16,7 +16,7 @@ export default function PetDetail() {
     <View style={styles.container}>
  
       <View style={styles.containerInfo}>
-        <Pressable style={styles.arrowBack} onPress={() => router.navigate('/home')}>
+        <Pressable style={styles.arrowBack} onPress={() => router.navigate('/mypets')}>
           <Ionicons name="arrow-back" size={28} color="#fdcb58" />
         </Pressable>
         <Image source={{ uri: pet.photo }} style={styles.image} />
