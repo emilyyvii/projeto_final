@@ -1,12 +1,15 @@
 import Button from "@/components/Button";
 import Footer from "../../components/Footer";
 import { router } from "expo-router";
-import { View, Text, StyleSheet, TextInput, Image } from "react-native";
+import { View, Text, StyleSheet, TextInput, Image, Pressable } from "react-native";
 import { Ionicons} from "@expo/vector-icons";
 
 export default function Password(){
     return(
         <View style={styles.container}>
+            <Pressable style={styles.arrowBack} onPress={() => router.navigate('/home')}>
+            <Ionicons name="arrow-back" size={24} color="black" style={styles.icon} />
+            </Pressable>
             <Image style={styles.image} source={require("@/assets/imagens/2.png")} />
             <View style={styles.white}>
                 <Text style={styles.title}>

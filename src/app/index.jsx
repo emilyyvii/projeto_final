@@ -1,6 +1,7 @@
 import { router } from 'expo-router';
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image, Pressable } from 'react-native';
 import Footer from "../components/Footer";
+import { Ionicons } from '@expo/vector-icons';
  
 export default function Index(){
  
@@ -10,11 +11,14 @@ export default function Index(){
     return(
  
         <View style={styles.container}>
+            <Pressable style={styles.arrowBack} onPress={() => router.navigate('/home')}>
+            <Ionicons name="arrow-back" size={24} color="black" style={styles.icon} />
+            </Pressable>
             <Image
                 style={styles.img}
                 source={require("@/assets/imagens/2.png")}
             />
-            <TouchableOpacity style={styles.button} onPress={signup}>
+            <TouchableOpacity style={styles.button} onPress={() => router.navigate('/contact')}>
                 <Text style={styles.title}>PROFISSIONAL</Text>
             </TouchableOpacity>
  

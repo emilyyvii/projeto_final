@@ -1,24 +1,34 @@
-import { StyleSheet } from 'react-native'
-import { Text, View } from 'react-native'
+import React from "react";
+import { View, Text, Image, StyleSheet } from "react-native";
 
-export default function Footer (){
-    return (
-        <View style={styles.container}>
-        <Text style={styles.text}>Apaixonados por animais</Text>
-        </View>
-    )
+export default function Footer({ text, textColor = "#000", showImage = false }) {
+  return (
+    <View style={styles.container}>
+      {showImage && (
+        <Image
+          source={require("@/assets/imagens/")} 
+          style={styles.image}
+          resizeMode="contain"
+        />
+      )}
+      <Text style={[styles.text, { color: textColor }]}>{text}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        position: "absolute",
-        bottom: 50,
-        alignSelf: "center",
-      },
-    text: {
-        color: "#fff",
-        fontSize: 15,
-        fontStyle: "italic",
-  
-    }
-})
+  container: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 10,
+  },
+  image: {
+    width: 120,
+    height: 40,
+    marginBottom: 5,
+  },
+  text: {
+    fontSize: 14,
+    fontStyle: "italic",
+  },
+});
