@@ -2,8 +2,7 @@ import { View, Image, StyleSheet, Pressable, Text } from "react-native";
 import { router } from "expo-router";
 import Footer from "../../components/Footer";
 
-export default function Home() {
-  return (
+export default function Home() {  return (
     <View style={styles.container}>
       <Image style={styles.header} source={require("@/assets/imagens/header.png")} />
 
