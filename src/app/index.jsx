@@ -26,11 +26,13 @@ export default function Index(){
             <TouchableOpacity style={styles.button} onPress={() => router .navigate('/signin')}>
                 <Text style={styles.title}>DONO PET</Text>
             </TouchableOpacity>
-            <Footer
-                text="Apaixonados por animal"
-                textColor="#fff"
-                showImage={false}
-            />
+            <View style={styles.footer}>
+                <Footer
+                    text="Apaixonados por animal"
+                    textColor="#fff"
+                    showImage={false}
+                />
+            </View>
 
         </View>
     );
@@ -58,13 +60,15 @@ const styles = StyleSheet.create({
         paddingVertical:10,
         width:"100%",
         height:50,
+        top: 150
     },
     img:{
         width:300,
         height:75,
+        top:80
     },
     footer: {
-        marginTop: 100
+        marginTop: 320
     }
 })
  
