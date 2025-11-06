@@ -44,37 +44,37 @@ export default function Index() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 32,
-        padding:60,
-        backgroundColor:"#141496"
-    },
-    title: {
-        fontSize: 22,
-        fontWeight: "bold",
-        color:"black",
-        textAlign:"center"
-    },
-    button:{
-        backgroundColor:"#fdcb58",
-        borderRadius: 10,
-        paddingHorizontal: 32,
-        paddingVertical:10,
-        width:"100%",
-        height:50,
-        top: 150
-    },
-    img:{
-        width:300,
-        height:75,
-        top:80
-    },
-    footer: {
-        marginTop: 320
-    }
+  container: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      gap: 32,
+      padding:60,
+      backgroundColor:"#141496"
+  },
+  title: {
+      fontSize: 22,
+      fontWeight: "bold",
+      color:"black",
+      textAlign:"center"
+  },
+  button:{
+      backgroundColor:"#fdcb58",
+      borderRadius: 10,
+      paddingHorizontal: 32,
+      paddingVertical:10,
+      width:"100%",
+      height:50,
+      top: 10
+  },
+  img:{
+      width:300,
+      height:75,
+      top:-60
+  },
+  footer: {
+      top: 170
+  }
 })
  
  
