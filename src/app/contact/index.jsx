@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import {View,Text,StyleSheet,TextInput,Pressable,Keyboard,} from "react-native";
 import { useRouter, useLocalSearchParams } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialIcons, Ionicons} from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const KEY_TELEFONE = "@contact_telefone";
@@ -11,7 +11,6 @@ export default function Contact() {
   const router = useRouter();
   const { tipo } = useLocalSearchParams();
   const podeEditar = tipo === "dono"; 
-
   const [telefone, setTelefone] = useState("");
   const [email, setEmail] = useState("");
   const [editandoTelefone, setEditandoTelefone] = useState(false);
@@ -75,7 +74,7 @@ export default function Contact() {
             <Text style={styles.label}>Número de telefone</Text>
             {podeEditar && (
               <Pressable onPress={toggleEditTelefone}>
-                <Ionicons name="pencil" size={22} color="#fdcb58" />
+                 <MaterialIcons name="edit" size={22} color="#fdcb58" />
               </Pressable>
             )}
           </View>
@@ -100,7 +99,7 @@ export default function Contact() {
             <Text style={styles.label}>E-mail</Text>
             {podeEditar && (
               <Pressable onPress={toggleEditEmail}>
-                <Ionicons name="pencil" size={22} color="#fdcb58" />
+               <MaterialIcons name="edit" size={22} color="#fdcb58" />
               </Pressable>
             )}
           </View>
@@ -126,7 +125,10 @@ export default function Contact() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F7C843" },
+  container: { 
+    flex: 1, 
+    backgroundColor: "#F7C843" 
+  },
   header: {
     flexDirection: "row",
     alignItems: "center",
@@ -136,14 +138,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   headerTitle: {
-    color: "#fdcb58",
-    fontSize: 18,
+    color: "#fff",
+    fontSize: 20,
     fontWeight: "bold",
-    marginLeft: 12,
+    marginLeft: 10,
   },
-
-  bannerText: { color: "#fff", fontSize: 14 },
-  Content: { marginTop: 40 },
+  bannerText: { 
+    color: "#fff", 
+    fontSize: 14 
+  },
+  Content: { 
+    marginTop: 40 
+  },
   infoBox: {
     backgroundColor: "#142A8C",
     borderRadius: 14,
@@ -160,8 +166,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 6,
   },
-  label: { color: "#fdcb58", fontSize: 16, fontWeight: "bold" },
-  value: { color: "#fff", fontSize: 15 },
+  label: { 
+    color: "#fdcb58", 
+    fontSize: 16, 
+    fontWeight: "bold" 
+  },
+  value: { 
+    color: "#fff", 
+    fontSize: 15 
+  },
   input: {
     backgroundColor: "#fff",
     color: "#000",
